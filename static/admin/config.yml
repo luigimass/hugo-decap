@@ -1,8 +1,12 @@
-local_backend: true
+#local_backend: true
 
 backend:
-  name: test-repo
+  name: github
+  squash_merges: true
+  repo: luigimass/hugo-decap
   branch: main
+  auth_type: pkce
+  publish_mode: editorial_workflow
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
