@@ -7,6 +7,7 @@ backend:
   branch: main
   auth_type: pkce
   publish_mode: editorial_workflow
+  app_id: GITHUB_APP_ID
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
