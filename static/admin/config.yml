@@ -1,13 +1,11 @@
 #local_backend: true
 
 backend:
-  name: github
-  squash_merges: true
+  name: git-gateway
   repo: luigimass/hugo-decap
   branch: main
-  auth_type: pkce
-  publish_mode: editorial_workflow
-  app_id: GITHUB_APP_ID
+  identity_url: https://auth.decapbridge.com/sites/68a8cd5c-f30e-44bf-ab76-4815eea56454
+  gateway_url: https://gateway.decapbridge.com
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
