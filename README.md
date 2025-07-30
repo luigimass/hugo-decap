@@ -3,6 +3,11 @@
 This is a simple Hugo project integrated with Decap CMS, configured for local development.
 
 ---
+# TEST EMAIL
+  - admin.hdp@protonmail.com Prova12345678!
+  - editor.hdp1@protonmail.com Prova12345678!
+
+---
 
 ## Prerequisites
 
