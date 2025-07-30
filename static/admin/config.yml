@@ -25,8 +25,8 @@ public_folder: "/uploads"
 collections:
   - name: "posts"
     label: "Posts"
-    folder: "content/{{fields.lang}}/posts"
-    path: "{{slug}}"
+    folder: "content"
+    path: "{{lang}}/posts/{{slug}}"
     create: true
     slug: "{{slug}}"
     fields:
