@@ -29,6 +29,7 @@ collections:
     path: "{{lang}}/posts/{{slug}}"
     create: true
     slug: "{{slug}}"
+    publish: '{{ currentUser.login == "adminhdp" }}' 
     fields:
       - label: "Language"
         name: "lang"
