@@ -1,4 +1,5 @@
 local_backend: true
+publish_mode: editorial_workflow
 
 backend:
   name: git-gateway
@@ -6,8 +7,7 @@ backend:
   branch: main
   identity_url: https://auth.decapbridge.com/sites/68a8cd5c-f30e-44bf-ab76-4815eea56454
   gateway_url: https://gateway.decapbridge.com
-  
-  # Quickly see who did what (optional)
+
   commit_messages:
     create: Create {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
     update: Update {{collection}} “{{slug}}” - {{author-name}} <{{author-login}}> via DecapBridge
@@ -16,10 +16,7 @@ backend:
     deleteMedia: Delete “{{path}}” - {{author-name}} <{{author-login}}> via DecapBridge
     openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge
 
-# Better Decap + Bridge logo (optional)
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
-
-# Add site links in DecapCMS (optional)
 site_url: https://hugo-decap-net.netlify.app
 
 media_folder: "static/uploads"
@@ -28,32 +25,60 @@ public_folder: "/uploads"
 collections:
   - name: "posts"
     label: "Posts"
-    folder: "content/posts"
+    folder: "content/{{fields.lang}}/posts"
+    path: "{{slug}}"
     create: true
+    slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "image", widget: "image" }
-      - { label: "Excerpt", name: "excerpt", widget: "text" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Language"
+        name: "lang"
+        widget: "select"
+        options: ["it", "en"]
+        default: "it"
 
-  - name: "blog"
-    label: "Blog"
-    folder: "content/blog"
-    create: true
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Cover Image", name: "cover", widget: "image" }
-      - { label: "Excerpt", name: "excerpt", widget: "text" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
 
   - name: "pages"
     label: "Pages"
     files:
-      - file: "content/_index.md"
-        label: "Homepage"
-        name: "home"
+      - file: "content/it/_index.md"
+        label: "Homepage (IT)"
+        name: "home_it"
+        fields:
+          - { label: "Titolo", name: "title", widget: "string" }
+          - { label: "Hero Text", name: "hero", widget: "text" }
+          - {
+              label: "CTA",
+              name: "cta",
+              widget: "object",
+              fields:
+                [
+                  { label: "Testo Bottone", name: "text", widget: "string" },
+                  { label: "Link Bottone", name: "link", widget: "string" },
+                ],
+            }
+
+      - file: "content/en/_index.md"
+        label: "Homepage (EN)"
+        name: "home_en"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Text", name: "hero", widget: "text" }
@@ -68,9 +93,16 @@ collections:
                 ],
             }
 
-      - file: "content/about/index.md"
-        label: "About Page"
-        name: "about"
+      - file: "content/it/about.md"
+        label: "About Page (IT)"
+        name: "about_it"
+        fields:
+          - { label: "Titolo", name: "title", widget: "string" }
+          - { label: "Contenuto", name: "body", widget: "markdown" }
+
+      - file: "content/en/about.md"
+        label: "About Page (EN)"
+        name: "about_en"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }

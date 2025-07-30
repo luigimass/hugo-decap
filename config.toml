@@ -1,16 +1,43 @@
 baseURL = "/"
 title = "My New Hugo Site"
-theme = "ananke"
+theme = "PaperMod"
+defaultContentLanguage = "it"
+buildDrafts = true
 
-[menu]
-  [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    url = "/posts"
-    weight = 10
+[languages]
 
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about"
-    weight = 20
+  [languages.it]
+    languageName = "Italiano"
+    weight = 1
+    contentDir = "content/it"
+
+    [languages.it.menu]
+      [[languages.it.menu.main]]
+        identifier = "posts"
+        name = "Articoli"
+        url = "/posts/"
+        weight = 10
+
+      [[languages.it.menu.main]]
+        identifier = "about"
+        name = "Chi siamo"
+        url = "/about/"
+        weight = 20
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/en/posts/"
+        weight = 10
+
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/en/about/"
+        weight = 20
